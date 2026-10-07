@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>!ani for all - Kids</title>
+<link rel="icon" type="image/png" href="WhatsApp Image 2026-09-07 at 5.18.31 PM.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Poppins, sans-serif;
+            background: black;
+            color: white;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            background: black;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .menu {
+            display: flex;
+            gap: 28px;
+        }
+
+        .menu a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .menu a:hover {
+            color: white;
+        }
+
+        .menu .active {
+            color: #ffcf32;
+        }
+
+        .search {
+            border-bottom: 1px solid #777;
+            padding: 7px;
+        }
+
+        .search input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            width: 180px;
+        }
+
+        /* KIDS HERO */
+
+        .kids-hero {
+            height: 330px;
+
+            display: flex;
+            align-items: center;
+
+            padding-left: 8%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,.8),
+                    rgba(0,0,0,.2)
+                ),
+                url("images/kids-bg.jpg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .kids-hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .kids-hero p {
+            color: #ddd;
+            max-width: 500px;
+        }
+
+        /* MOVIES */
+
+        .movies {
+            padding: 45px 6%;
+        }
+
+        .movies h2 {
+            font-size: 25px;
+            margin-bottom: 25px;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 22px;
+        }
+
+        .movie {
+            background: black;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .movie:hover {
+            transform: translateY(-8px);
+        }
+
+        .movie img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .movie-info {
+            padding: 12px;
+        }
+
+        .movie-info h3 {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .movie-info p {
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #aaa;
+            background: black;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 900px) {
+
+            .movie-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+        @media(max-width: 600px) {
+
+            nav {
+                height: auto;
+                padding: 20px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .menu {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .search {
+                width: 140px;
+            }
+
+            .search input {
+                width: 110px;
+            }
+
+            .kids-hero {
+                height: 280px;
+                padding-left: 6%;
+            }
+
+            .kids-hero h1 {
+                font-size: 35px;
+            }
+
+            .movie-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .movie img {
+                height: 230px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            !ani for all
+        </div>
+
+        <div class="menu">
+
+            <a href="mar.html">
+                <i class="fa-solid fa-house"></i>
+                back
+            </a>
+
+            <a href="kid.html" class="active">
+                <i class="fa-solid fa-child"></i>
+                Kids
+            </a>
+
+            <a href="trend.html"><i class="fa-solid fa-fire"></i>
+                Trend
+            </a>
+
+            <a href="my list.html"><i class="fa-solid fa-bookmark"></i>
+                My List
+            </a>
+
+        </div>
+
+        <div class="search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                placeholder="Search Kids Movies">
+
+        </div>
+
+    </nav>
+
+
+    <!-- KIDS HERO -->
+
+    <section class="kids-hero">
+
+        <div>
+
+            <h1>Kids section 🍿</h1>
+
+            <p>
+                Fun, family-friendly anime and adventures
+                for kids of all ages.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- POPULAR -->
+
+    <section class="movies">
+
+        <h2>
+            <i class="fa-solid fa-star"></i>
+            Popular Kids anime
+        </h2>
+
+        <div class="movie-grid">
+
+            <div class="movie">
+
+                <img src="ROK.png">
+
+                <div class="movie-info">
+                    <h3>ranking of kings</h3>
+                    <p>Animation • Family</p>
+                </div>
+
+            </div>
+
+
+            <div class="movie">
+
+                <img src="doreamon.jpg">
+
+                <div class="movie-info">
+                    <h3>doraemon</h3>
+                    <p>Animation • Fantasy</p>
+                </div>
+
+            </div>
+
+
+            <div class="movie">
+
+                <img src="LWA.jpg">
+
+                <div class="movie-info">
+                    <h3>little witch academia</h3>
+                    <p>Animation • Adventure</p>
+                </div>
+
+            </div>
+
+
+            <div class="movie">
+
+                <img src="MNT.jpg">
+
+                <div class="movie-info">
+                    <h3>my Neidhbor totoro</h3>
+                    <p>Animation • Adventure</p>
+                </div>
+
+            </div>
+
+
+            <div class="movie">
+
+                <img src="ponyo.png">
+
+                <div class="movie-info">
+                    <h3>ponyo</h3>
+                    <p>Animation • Adventure</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NEW MOVIES -->
+
+    <section class="movies">
+
+        <h2>
+            <i class="fa-solid fa-film"></i>
+            More Kid anime movie
+        </h2>
+
+        <div class="movie-grid">
+
+            <div class="movie">
+                <img src="poker.png">
+                <div class="movie-info">
+                    <h3>pokemon</h3>
+                    <p>Family • Fantasy</p>
+                </div>
+            </div>
+
+            <div class="movie">
+                <img src="DiGimon.png">
+                <div class="movie-info">
+                    <h3>digimon</h3>
+                    <p>Animation • Comedy</p>
+                </div>
+            </div>
+
+            <div class="movie">
+                <img src="YW.png">
+                <div class="movie-info">
+                    <h3>yo-kai watch</h3>
+                    <p>Adventure • Family</p>
+                </div>
+            </div>
+
+            <div class="movie">
+                <img src="CAW!.jpg">
+                <div class="movie-info">
+                    <h3>cells at work!</h3>
+                    <p>Animation • Comedy</p>
+                </div>
+            </div>
+
+            <div class="movie">
+                <img src="Casu.jpg">
+                <div class="movie-info">
+                    <h3>cardcaptor surkura</h3>
+                    <p>Action • Animation</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        © 2026 iMovies — Kids
+    </footer>
+
+</body>
+</html>

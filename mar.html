@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>!ani for all</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+   
+    <link rel="icon" type="image/png" href="WhatsApp Image 2026-09-07 at 5.18.31 PM.jpeg">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: black
+            color: white;
+        }
+
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(2, 8, 12, 0.65) 0%,
+                    rgba(2, 15, 23, 0.35) 50%,
+                    rgba(1, 13, 24, 0.65) 100%
+                ),
+                linear-gradient(
+                    180deg,
+                    rgba(0,0,0,0.15),
+                    rgba(0,0,0,0.8)
+                ),
+                url("images/little-mermaid-bg.jpg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Dark overlay */
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: black;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1400px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: #dbe3e6;
+        }
+
+        .logo span {
+            color: #dce9ee;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .menu a {
+            color: #dbe5e8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #fff;
+        }
+
+        .menu i {
+            font-size: 11px;
+            margin-right: 5px;
+        }
+
+        .search {
+            width: 265px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .search i {
+            color: white;
+            font-size: 13px;
+        }
+
+        .search input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: white;
+            font-family: inherit;
+        }
+
+        .search input::placeholder {
+            color: #dce4e7;
+        }
+
+        /* ================= HERO CONTENT ================= */
+
+        .hero-content {
+            min-height: calc(100vh - 90px);
+            display: flex;
+            align-items: center;
+        }
+
+        .movie-info {
+            width: 50%;
+            padding-bottom: 80px;
+        }
+
+        .movie-title {
+            font-family: Georgia, serif;
+            font-size: 48px;
+            line-height: 1;
+            color: #ead18b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px black;
+            margin-bottom: 22px;
+            max-width: 400px;
+        }
+
+        .movie-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #dbe3e6;
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .age {
+            background: #ff4728;
+            color: white;
+            padding: 2px 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .line {
+            width: 1px;
+            height: 20px;
+            background: rgba(255,255,255,0.45);
+        }
+
+        .description {
+            max-width: 480px;
+            font-size: 14px;
+            line-height: 1.65;
+            color: #e0e7e9;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons */
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            border: none;
+            cursor: pointer;
+            padding: 10px 18px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .watch-btn {
+            background: #ff4525;
+            color: white;
+        }
+
+        .watch-btn:hover {
+            background: #ff6045;
+            transform: translateY(-2px);
+        }
+
+        .list-btn {
+            background: black;
+            color: white;
+        }
+
+        .list-btn:hover {
+            background: black;
+        }
+
+        /* ================= MOVIE CARDS ================= */
+
+        .movie-slider {
+            position: absolute;
+            right: 1%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48%;
+            min-height: 420px;
+
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(3, 31, 43, 0.38);
+            backdrop-filter: blur(4px);
+
+            border-radius: 8px;
+            padding: 55px 30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .movie-card {
+            width: 160px;
+            height: 240px;
+            overflow: hidden;
+            border-radius: 5px;
+            opacity: 0.55;
+            transform: scale(0.92);
+            transition: 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .movie-card:hover {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .movie-card.active {
+            width: 180px;
+            height: 270px;
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        /* ================= BOTTOM ================= */
+
+        .bottom-left {
+            position: absolute;
+            left: 6%;
+            bottom: 35px;
+            z-index: 3;
+        }
+
+        .trailer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .trailer i {
+            font-size: 28px;
+        }
+
+        .social {
+            position: absolute;
+            right: 5%;
+            bottom: 38px;
+            z-index: 3;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social a {
+            color: white;
+            font-size: 17px;
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            transform: translateY(-3px);
+            color: #52c7e8;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1100px) {
+
+            .container {
+                width: 92%;
+            }
+
+            .movie-slider {
+                width: 52%;
+                gap: 10px;
+            }
+
+            .movie-card {
+                width: 125px;
+                height: 195px;
+            }
+
+            .movie-card.active {
+                width: 150px;
+                height: 230px;
+            }
+
+            .movie-title {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 850px) {
+
+            .hero {
+                min-height: 1000px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 22px 0;
+                gap: 18px;
+            }
+
+            .menu {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .search {
+                width: 180px;
+            }
+
+            .hero-content {
+                display: block;
+                padding-top: 50px;
+            }
+
+            .movie-info {
+                width: 100%;
+            }
+
+            .movie-slider {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                width: 100%;
+                margin-top: 30px;
+                min-height: 300px;
+                padding: 20px;
+            }
+
+            .bottom-left {
+                bottom: 25px;
+                left: 4%;
+            }
+
+            .social {
+                bottom: 25px;
+                right: 4%;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .logo {
+                font-size: 27px;
+            }
+
+            .menu {
+                gap: 15px;
+            }
+
+            .menu a {
+                font-size: 12px;
+            }
+
+            .search {
+                width: 145px;
+            }
+
+            .movie-title {
+                font-size: 34px;
+            }
+
+            .movie-meta {
+                font-size: 14px;
+                flex-wrap: wrap;
+            }
+
+            .description {
+                font-size: 13px;
+            }
+
+            .movie-card {
+                width: 90px;
+                height: 140px;
+            }
+
+            .movie-card.active {
+                width: 110px;
+                height: 165px;
+            }
+
+            .movie-slider {
+                min-height: 230px;
+                padding: 15px;
+            }
+
+            .trailer {
+                font-size: 11px;
+            }
+
+            .social {
+                gap: 12px;
+            }
+        }
+
+        #kong{ height: 150px; 
+        width: 150px;
+        padding: 20px; margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<section class="hero">
+    <div class="container">
+
+        <!-- NAVBAR -->
+        <nav><div class="logo">
+<img src="WhatsApp Image 2026-09-07 at 5.18.31 PM.jpeg" alt="" id="kong">
+            
+                
+            </div>
+
+            <div class="menu">
+                <a href="">
+                    <i class="fa-solid fa-house"></i>
+                    back
+                </a>
+
+                <a href="kid.html">
+                    <i class="fa-solid fa-child"></i>
+                    Kids</a>
+
+                <a href="trend.html">
+                    <i class="fa-solid fa-fire"></i>
+                    Trend</a>
+
+                <a href="my list.html">
+                    <i class="fa-solid fa-bookmark"></i>
+                    My List</a>
+            </div>
+
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search">
+            </div>
+
+        </nav>
+
+
+        <!-- HERO -->
+        <div class="hero-content">
+
+            <div class="movie-info">
+
+                <h1 class="movie-title">
+                    solo leveling
+                </h1>
+
+                <div class="movie-meta">
+
+                    <span>2025</span>
+
+                    <span class="age">12+</span>
+
+                    <span class="line"></span>
+
+                    <span>24min</span>
+
+                    <span class="line"></span>
+
+                    <span>action</span>
+
+                </div>
+
+                <p class="description">The plot follows Sung Jinwoo, known as the "World's Weakest" E-rank hunter, who barely survives low-level raids to pay for his comatose mother's medical bills. During a brutal double dungeon trap that massacres his team, a mysterious program called the "System" chooses Jinwoo as its sole player.
+                    
+                </p>
+
+
+                <div class="buttons">
+
+                    <button class="btn watch-btn">
+                      <a href="vv.html"><i class="fa-solid fa-play"></i>
+                        play </a>
+                    </button>
+
+                    <button class="btn list-btn">
+                        <i class="fa-solid fa-plus"></i>
+                        MY LIST
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOVIE SLIDER -->
+
+        <div class="movie-slider">
+
+            <div class="movie-card">
+                <img src="images (8).jpg" alt="Movie">
+            </div>
+
+            <div class="movie-card active">
+                <img src="Solo.png"
+                     alt="solo leveling">
+            </div>
+
+            <div class="movie-card">
+                <img src="images.jpg" alt="Movie">
+            </div>
+
+        </div>
+
+
+        <!-- TRAILER -->
+
+        <div class="bottom-left">
+
+            <a href="#" class="trailer">
+                <i class="fa-regular fa-circle-play"></i>
+                WATCH TRAILER
+            </a>
+
+        </div>
+
+
+        <!-- SOCIAL ICONS -->
+
+        <div class="social">
+
+            <a href="https://www.facebook.com/profile.php?id=61594306857094">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="https://www.youtube.com/@aniforall">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+            <a href="https://x.com/aniforall67/media">
+                <i class="fa-brands fa-twitter"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>

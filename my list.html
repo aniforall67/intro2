@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>!ani for all - My List</title>
+<link rel="icon" type="image/png" href="WhatsApp Image 2026-09-07 at 5.18.31 PM.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Poppins, sans-serif;
+            background: black;
+            color: white;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            min-height: 80px;
+            padding: 0 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: black;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .menu a {
+            color: #d7dfe2;
+            text-decoration: none;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        .menu a:hover {
+            color: white;
+        }
+
+        .menu .active {
+            color: #ff4828;
+        }
+
+        .menu i {
+            margin-right: 5px;
+        }
+
+        /* SEARCH */
+
+        .search {
+            width: 220px;
+            padding: 8px 0;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            border-bottom: 1px solid #777;
+        }
+
+        .search input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: white;
+            font-family: inherit;
+        }
+
+        /* ================= HEADER ================= */
+
+        .page-header {
+            padding: 55px 6% 35px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(2,12,18,.95),
+                    rgba(2,24,33,.65)
+                );
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 8px;
+        }
+
+        .page-header h1 i {
+            color: #ff4828;
+        }
+
+        .page-header p {
+            color: #9daab0;
+            font-size: 14px;
+        }
+
+        /* ================= MOVIE SECTION ================= */
+
+        .movies {
+            padding: 35px 6% 60px;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 22px;
+        }
+
+        .movie {
+            position: relative;
+            overflow: hidden;
+
+            border-radius: 8px;
+            background: black;
+
+            transition: .3s;
+        }
+
+        .movie:hover {
+            transform: translateY(-7px);
+        }
+
+        .movie img {
+            width: 100%;
+            height: 285px;
+            display: block;
+
+            object-fit: cover;
+        }
+
+        /* REMOVE BUTTON */
+
+        .remove {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+
+            width: 35px;
+            height: 35px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: black;
+            color: white;
+
+            cursor: pointer;
+            font-size: 14px;
+
+            transition: .3s;
+        }
+
+        .remove:hover {
+            background: #ff4828;
+            transform: scale(1.1);
+        }
+
+        /* MOVIE INFO */
+
+        .movie-info {
+            padding: 13px;
+        }
+
+        .movie-info h3 {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .movie-info p {
+            color: #9ca9ae;
+            font-size: 12px;
+        }
+
+        .rating {
+            margin-top: 7px;
+            color: #ffd34d;
+            font-size: 12px;
+        }
+
+        /* WATCH BUTTON */
+
+        .watch {
+            margin-top: 10px;
+
+            padding: 7px 14px;
+
+            border: none;
+            border-radius: 3px;
+
+            background: #ff4828;
+            color: white;
+
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+        .watch:hover {
+            background: #ff6248;
+        }
+
+        /* ================= EMPTY LIST ================= */
+
+        .empty {
+            display: none;
+
+            text-align: center;
+            padding: 100px 20px;
+            color: #8d9aa0;
+        }
+
+        .empty i {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .empty h2 {
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+
+            background: black;
+            color: #7d8a90;
+
+            font-size: 13px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .movie-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 18px 5%;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .menu {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .search {
+                width: 150px;
+            }
+
+            .page-header h1 {
+                font-size: 34px;
+            }
+
+            .movie-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .movie img {
+                height: 230px;
+            }
+
+        }
+
+        @media (max-width: 450px) {
+
+            .movie img {
+                height: 200px;
+            }
+
+            .movie-info h3 {
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        !ani for all
+    </div>
+
+
+    <div class="menu">
+
+        <a href="mar.html">
+            <i class="fa-solid fa-house"></i>
+            home
+        </a>
+
+        <a href="kid.html">
+            <i class="fa-solid fa-child"></i>
+            Kids
+        </a>
+
+        <a href="trend.html">
+            <i class="fa-solid fa-fire"></i>
+            Trend
+        </a>
+
+        <a href="my list.html" class="active">
+            <i class="fa-solid fa-bookmark"></i>
+            My List
+        </a>
+
+    </div>
+
+
+    <div class="search">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search">
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="page-header">
+
+    <h1>
+        <i class="fa-solid fa-bookmark"></i>
+        My List
+    </h1>
+
+    <p>
+        Your saved movies and shows
+    </p>
+
+</header>
+
+
+<!-- ================= MOVIES ================= -->
+
+<section class="movies">
+
+    <div class="movie-grid" id="movieGrid">
+
+
+        <!-- MOVIE 1 -->
+
+        <div class="movie">
+
+            <button class="remove" onclick="removeMovie(this)">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <img src="tensura.jpeg"
+                 alt="TENSURA">
+
+            <div class="movie-info">
+
+                <h3>TENSURA</h3>
+
+                <p>
+                    Fantasy • ACTION
+                </p>
+
+                <div class="rating">
+                    ★ 7.2
+                </div>
+
+                <button class="watch">
+                    <i class="fa-solid fa-play"></i>
+                    WATCH
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOVIE 2 -->
+
+        <div class="movie">
+
+            <button class="remove" onclick="removeMovie(this)">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <img src="overlord.jpeg"
+                 alt="Movie">
+
+            <div class="movie-info">
+
+                <h3>OVERLORD</h3>
+
+                <p>
+                    Action • Adventure
+                </p>
+
+                <div class="rating">
+                    ★ 8.5
+                </div>
+
+                <button class="watch">
+                    <i class="fa-solid fa-play"></i>
+                    WATCH
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOVIE 3 -->
+
+        <div class="movie">
+
+            <button class="remove" onclick="removeMovie(this)">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <img src="DBS.jpeg"
+                 alt="Movie">
+
+            <div class="movie-info">
+
+                <h3>DRAGON BALL SUPER</h3>
+
+                <p>
+                    Adventure • ACTION
+                </p>
+
+                <div class="rating">
+                    ★ 8.1
+                </div>
+
+                <button class="watch">
+                    <i class="fa-solid fa-play"></i>
+                    WATCH
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOVIE 4 -->
+
+        <div class="movie">
+
+            <button class="remove" onclick="removeMovie(this)">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <img src="Naruto.jpeg"
+                 alt="Movie">
+
+            <div class="movie-info">
+
+                <h3>NARUTO: SHIPPUDEN</h3>
+
+                <p>
+                    SHONEN • ACTION
+                </p>
+
+                <div class="rating">
+                    ★ 8.3
+                </div>
+
+                <button class="watch">
+                    <i class="fa-solid fa-play"></i>
+                    WATCH
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOVIE 5 -->
+
+        <div class="movie">
+
+            <button class="remove" onclick="removeMovie(this)">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <img src="Dr_Stone.webp"
+                 alt="Movie">
+
+            <div class="movie-info">
+
+                <h3>Dr.Stone</h3>
+
+                <p>
+                    Sci-Fi • Action
+                </p>
+
+                <div class="rating">
+                    ★ 8.8
+                </div>
+
+                <button class="watch">
+                    <i class="fa-solid fa-play"></i><a href=""></a>
+                    WATCH
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- EMPTY MESSAGE -->
+
+    <div class="empty" id="empty">
+
+        <i class="fa-regular fa-bookmark"></i>
+
+        <h2>Your list is empty</h2>
+
+        <p>
+            Add movies to your list and they will appear here.
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer>
+    © 2026 iMovies — My List
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    function removeMovie(button) {
+
+        const movie = button.parentElement;
+
+        movie.remove();
+
+        checkEmpty();
+
+    }
+
+
+    function checkEmpty() {
+
+        const grid = document.getElementById("movieGrid");
+        const empty = document.getElementById("empty");
+
+        if (grid.children.length === 0) {
+
+            empty.style.display = "block";
+
+        }
+
+    }
+
+
+    /* SEARCH */
+
+    document.getElementById("search").addEventListener("input", function () {
+
+        const searchText = this.value.toLowerCase();
+
+        const movies = document.querySelectorAll(".movie");
+
+        movies.forEach(function(movie) {
+
+            const title =
+                movie.querySelector("h3").textContent.toLowerCase();
+
+            if (title.includes(searchText)) {
+
+                movie.style.display = "";
+
+            } else {
+
+                movie.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

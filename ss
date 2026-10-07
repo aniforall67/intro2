@@ -1,0 +1,1 @@
+The plot follows Sung Jinwoo, known as the "World's Weakest" E-rank hunter, who barely survives low-level raids to pay for his comatose mother's medical bills. During a brutal double dungeon trap that massacres his team, a mysterious program called the "System" chooses Jinwoo as its sole player.

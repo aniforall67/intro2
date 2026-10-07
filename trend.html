@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>!ani for all - Trending</title>
+     <link rel="icon" type="image/png" href="WhatsApp Image 2026-09-07 at 5.18.31 PM.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Poppins, sans-serif;
+            background: black;
+            color: white;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            background: black;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .menu a {
+            color: #d5dce0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        .menu a:hover {
+            color: white;
+        }
+
+        .menu .active {
+            color: #ff4828;
+        }
+
+        .menu i {
+            margin-right: 4px;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 220px;
+            padding: 8px 0;
+            border-bottom: 1px solid #777;
+        }
+
+        .search input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-family: inherit;
+        }
+
+        /* TREND HERO */
+
+        .trend-hero {
+            height: 350px;
+            display: flex;
+            align-items: center;
+            padding-left: 8%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.893),
+                    rgba(0, 0, 0, 0.977)
+                ),
+                url("images/trend-bg.jpg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .trend-content h1 {
+            font-size: 52px;
+            margin-bottom: 10px;
+        }
+
+        .trend-content h1 i {
+            color: #ff4828;
+        }
+
+        .trend-content p {
+            color: #d3dadd;
+            max-width: 550px;
+        }
+
+        /* MOVIES */
+
+        .movies {
+            padding: 45px 6%;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .section-title i {
+            color: #ff4828;
+        }
+
+        .section-title h2 {
+            font-size: 25px;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 22px;
+        }
+
+        .movie {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background: black;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .movie:hover {
+            transform: translateY(-8px);
+        }
+
+        .movie img {
+            width: 100%;
+            height: 285px;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* TREND NUMBER */
+
+        .rank {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: black;
+            border-radius: 50%;
+
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .movie-info {
+            padding: 13px;
+        }
+
+        .movie-info h3 {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .movie-info p {
+            color: #9faeb3;
+            font-size: 12px;
+        }
+
+        .rating {
+            margin-top: 7px;
+            color: #ffd34d;
+            font-size: 12px;
+        }
+
+        /* TRENDING NOW */
+
+        .wide-card {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            background:  black;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: .3s;
+        }
+
+        .wide-card:hover {
+            transform: translateX(5px);
+        }
+
+        .wide-card img {
+            width: 250px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .wide-info {
+            padding: 20px;
+        }
+
+        .wide-info h3 {
+            font-size: 20px;
+            margin-bottom: 7px;
+        }
+
+        .wide-info p {
+            color: #aeb9bd;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .watch {
+            margin-top: 12px;
+            padding: 8px 15px;
+            border: none;
+            background: #ff4828;
+            color: white;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: black;
+            color: #89969b;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 1000px) {
+
+            .movie-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+        @media(max-width: 700px) {
+
+            nav {
+                padding: 18px 5%;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .menu {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .search {
+                width: 150px;
+            }
+
+            .trend-hero {
+                height: 280px;
+                padding-left: 6%;
+            }
+
+            .trend-content h1 {
+                font-size: 38px;
+            }
+
+            .movie-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .movie img {
+                height: 230px;
+            }
+
+            .wide-card {
+                grid-template-columns: 130px 1fr;
+            }
+
+            .wide-card img {
+                width: 130px;
+                height: 150px;
+            }
+
+        }
+
+        @media(max-width: 450px) {
+
+            .movie img {
+                height: 200px;
+            }
+
+            .movie-info h3 {
+                font-size: 13px;
+            }
+
+            .wide-card {
+                grid-template-columns: 1fr;
+            }
+
+            .wide-card img {
+                width: 100%;
+                height: 200px;
+            }
+
+            .wide-info {
+                padding: 15px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        !ani for all
+    </div>
+
+    <div class="menu">
+
+        <a href="mar.html">
+            <i class="fa-solid fa-house"></i>
+            home
+        </a>
+
+        <a href="kid.html">
+            <i class="fa-solid fa-child"></i>
+            Kids
+        </a>
+
+        <a href="trend.html" class="active">
+            <i class="fa-solid fa-fire"></i>
+            Trend
+        </a>
+
+        <a href="my list.html"><i class="fa-solid fa-bookmark"></i>
+            My List
+        </a>
+
+    </div>
+
+    <div class="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search">
+    </div>
+
+</nav>
+
+
+<!-- TREND HERO -->
+
+<section class="trend-hero">
+
+    <div class="trend-content">
+
+        <h1>
+            <i class="fa-solid fa-fire"></i>
+            Trending Now
+        </h1>
+
+        <p>
+            Discover the movies everyone is watching right now.
+            Explore the latest popular movies and find your next
+            favorite.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- TOP TRENDING -->
+
+<section class="movies">
+
+    <div class="section-title">
+
+        <i class="fa-solid fa-chart-line"></i>
+
+        <h2>
+            Top Trending Animes
+        </h2>
+
+    </div>
+
+
+    <div class="movie-grid">
+
+        <!-- 1 -->
+
+        <div class="movie">
+
+            <div class="rank">1</div>
+
+            <img src="op.jpeg" alt="Trending ANIME">
+
+            <div class="movie-info">
+
+                <h3>One Piece</h3>
+
+                <p>Action • Adventure</p>
+
+                <div class="rating">
+                    ★ 9.9
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2 -->
+
+        <div class="movie">
+
+            <div class="rank">2</div>
+
+            <img src="jjk.jpeg" alt="Trending ANIME">
+
+            <div class="movie-info">
+
+                <h3>JUJUTSU KAISEN</h3>
+
+                <p>ACTION • Thriller</p>
+
+                <div class="rating">
+                    ★ 8.6
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 3 -->
+
+        <div class="movie">
+
+            <div class="rank">3</div>
+
+            <img src="opm.jpeg" alt="Trending ANIME">
+
+            <div class="movie-info">
+
+                <h3>ONE-PUNCH MEN</h3>
+
+                <p>Action • Sci-Fi</p>
+
+                <div class="rating">
+                    ★ 8.5
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 4 -->
+
+        <div class="movie">
+
+            <div class="rank">4</div>
+
+            <img src="b.jpeg" alt="Trending ANIME">
+
+            <div class="movie-info">
+
+                <h3>BLEACH T-Y-B-W</h3>
+
+                <p>Fantasy • ACTION</p>
+
+                <div class="rating">
+                    ★ 9.5
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 5 -->
+
+        <div class="movie">
+
+            <div class="rank">5</div>
+
+            <img src="DS.webp" alt="Trending ANIME">
+
+            <div class="movie-info">
+
+                <h3>DEMON SLAYER</h3>
+
+                <p>ACTION </p>
+
+                <div class="rating">
+                    ★ 9.8
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TRENDING THIS WEEK -->
+
+<section class="movies">
+
+    <div class="section-title">
+
+        <i class="fa-solid fa-fire"></i>
+
+        <h2>
+            Trending This Week
+        </h2>
+
+    </div>
+
+
+    <div class="wide-card">
+
+        <img src="bsm.jpg">
+
+        <div class="wide-info">
+
+            <h3>Movie of the Week</h3>
+
+            <p>
+                One of the most watched ANIMES this week.
+                Experience an exciting story filled with action,
+                adventure and unforgettable characters.
+            </p>
+
+            <button class="watch">
+                <a href="vv.html"><i class="fa-solid fa-play"></i> 
+                WATCH NOW</a>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="wide-card">
+
+        <img src="pppp.jpeg">
+
+        <div class="wide-info">
+
+            <h3>Most Watched</h3>
+
+            <p>
+                A fan-favorite ANIME currently taking over
+                the trending charts.
+            </p>
+
+            <button class="watch">
+               <a href="vv.html"> <i class="fa-solid fa-play"></i>
+                WATCH NOW </a>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    © 2026 iMovies — Trending ANIME
+</footer>
+
+</body>
+</html>
