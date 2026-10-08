@@ -469,6 +469,457 @@
         width: 150px;
         padding: 20px; margin-top: 20px;
         }
+
+        /* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 850px) {
+
+    .hero {
+        min-height: 100vh;
+        overflow-x: hidden;
+        background-position: center;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    /* ---------- NAVBAR ---------- */
+
+    nav {
+        height: auto;
+
+        display: grid;
+
+        grid-template-columns: 1fr auto;
+
+        align-items: center;
+
+        gap: 10px;
+
+        padding: 10px 0 0;
+    }
+
+    /* LOGO */
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    #kong {
+        width: 115px;
+        height: 115px;
+
+        padding: 8px;
+
+        margin-top: 0;
+
+        object-fit: contain;
+    }
+
+    /* SEARCH */
+
+    .search {
+        width: 180px;
+
+        justify-self: end;
+
+        padding: 8px 0;
+    }
+
+    .search input {
+        font-size: 14px;
+    }
+
+    .search i {
+        font-size: 15px;
+    }
+
+    /* ---------- MENU ---------- */
+
+    .menu {
+        grid-column: 1 / -1;
+
+        width: 100%;
+
+        display: flex;
+
+        justify-content: space-between;
+
+        gap: 12px;
+
+        overflow-x: auto;
+
+        padding: 12px 0;
+
+        scrollbar-width: none;
+    }
+
+    .menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .menu a {
+        font-size: 13px;
+
+        white-space: nowrap;
+
+        flex-shrink: 0;
+    }
+
+    .menu i {
+        font-size: 11px;
+        margin-right: 4px;
+    }
+
+
+    /* ---------- HERO ---------- */
+
+    .hero-content {
+        min-height: auto;
+
+        display: block;
+
+        padding-top: 35px;
+
+        padding-bottom: 100px;
+    }
+
+    .movie-info {
+        width: 100%;
+
+        padding-bottom: 0;
+    }
+
+
+    /* ---------- TITLE ---------- */
+
+    .movie-title {
+        width: 100%;
+
+        max-width: 100%;
+
+        font-size: clamp(40px, 11vw, 58px);
+
+        line-height: 1.05;
+
+        letter-spacing: 1px;
+
+        margin-bottom: 25px;
+    }
+
+
+    /* ---------- META ---------- */
+
+    .movie-meta {
+        display: flex;
+
+        align-items: center;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+
+        font-size: 15px;
+
+        margin-bottom: 18px;
+    }
+
+    .age {
+        font-size: 13px;
+
+        padding: 2px 7px;
+    }
+
+    .line {
+        height: 18px;
+    }
+
+
+    /* ---------- DESCRIPTION ---------- */
+
+    .description {
+        width: 100%;
+
+        max-width: 100%;
+
+        font-size: 14px;
+
+        line-height: 1.65;
+
+        margin-bottom: 25px;
+    }
+
+
+    /* ---------- BUTTONS ---------- */
+
+    .buttons {
+        display: flex;
+
+        align-items: center;
+
+        gap: 15px;
+    }
+
+    .btn {
+        padding: 12px 18px;
+
+        font-size: 13px;
+    }
+
+    .watch-btn a {
+        color: white;
+
+        text-decoration: none;
+    }
+
+
+    /* ---------- MOVIE SLIDER ---------- */
+
+    .movie-slider {
+        position: relative;
+
+        top: auto;
+        right: auto;
+
+        transform: none;
+
+        width: 100%;
+
+        min-height: 250px;
+
+        margin-top: 35px;
+
+        padding: 20px;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        gap: 8px;
+
+        overflow: hidden;
+    }
+
+    .movie-card {
+        width: 80px;
+
+        height: 125px;
+
+        flex-shrink: 0;
+    }
+
+    .movie-card.active {
+        width: 100px;
+
+        height: 150px;
+    }
+
+
+    /* ---------- BOTTOM ---------- */
+
+    .bottom-left {
+        left: 5%;
+
+        bottom: 25px;
+    }
+
+    .trailer {
+        font-size: 10px;
+
+        gap: 7px;
+    }
+
+    .trailer i {
+        font-size: 22px;
+    }
+
+
+    /* ---------- SOCIAL ---------- */
+
+    .social {
+        right: 5%;
+
+        bottom: 25px;
+
+        gap: 14px;
+    }
+
+    .social a {
+        font-size: 15px;
+    }
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 550px) {
+
+    .container {
+        width: 90%;
+    }
+
+    /* LOGO + SEARCH */
+
+    #kong {
+        width: 105px;
+        height: 105px;
+    }
+
+    .search {
+        width: 155px;
+    }
+
+    .search input {
+        font-size: 13px;
+    }
+
+
+    /* NAVIGATION */
+
+    .menu {
+        gap: 12px;
+    }
+
+    .menu a {
+        font-size: 12px;
+    }
+
+
+    /* HERO */
+
+    .hero-content {
+        padding-top: 30px;
+        padding-bottom: 90px;
+    }
+
+
+    /* TITLE */
+
+    .movie-title {
+        font-size: 40px;
+
+        line-height: 1.05;
+
+        letter-spacing: 1px;
+    }
+
+
+    /* META */
+
+    .movie-meta {
+        font-size: 14px;
+
+        gap: 7px;
+    }
+
+
+    /* DESCRIPTION */
+
+    .description {
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+
+
+    /* BUTTONS */
+
+    .btn {
+        padding: 11px 16px;
+
+        font-size: 12px;
+    }
+
+
+    /* SLIDER */
+
+    .movie-slider {
+        min-height: 215px;
+
+        padding: 15px;
+    }
+
+    .movie-card {
+        width: 70px;
+
+        height: 110px;
+    }
+
+    .movie-card.active {
+        width: 88px;
+
+        height: 132px;
+    }
+
+
+    /* BOTTOM */
+
+    .trailer {
+        font-size: 9px;
+    }
+
+    .trailer i {
+        font-size: 20px;
+    }
+
+    .social {
+        gap: 11px;
+    }
+
+    .social a {
+        font-size: 14px;
+    }
+}
+
+
+/* =========================
+   VERY SMALL PHONE
+========================= */
+
+@media (max-width: 380px) {
+
+    .container {
+        width: 92%;
+    }
+
+    #kong {
+        width: 90px;
+        height: 90px;
+    }
+
+    .search {
+        width: 135px;
+    }
+
+    .menu {
+        gap: 10px;
+    }
+
+    .menu a {
+        font-size: 11px;
+    }
+
+    .movie-title {
+        font-size: 35px;
+    }
+
+    .description {
+        font-size: 12.5px;
+    }
+
+    .movie-slider {
+        display: none;
+    }
+
+}
     </style>
 </head>
 
